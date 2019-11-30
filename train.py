@@ -18,9 +18,10 @@ from model import BDRAR
 cudnn.benchmark = True
 
 torch.cuda.set_device(0)
+torch.autograd.set_detect_anomaly(True)
 
 ckpt_path = './ckpt'
-exp_name = 'BDRAR'
+exp_name = 'BDRAR-xView2'
 
 # batch size of 8 with resolution of 416*416 is exactly OK for the GTX 1080Ti GPU
 args = {

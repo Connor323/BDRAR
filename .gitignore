@@ -69,3 +69,4 @@ target/
 results*
 logs
 Datasets
+*.txt
