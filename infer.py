@@ -13,9 +13,9 @@ from model import BDRAR
 torch.cuda.set_device(0)
 
 ckpt_path = './ckpt'
-exp_name = 'BDRAR'
+exp_name = 'BDRAR-xView2'
 args = {
-    'snapshot': '3000',
+    'snapshot': '3001',
     'scale': 416
 }
 
@@ -55,7 +55,7 @@ def main():
 
                 Image.fromarray(prediction).save(
                     os.path.join(ckpt_path, exp_name, '(%s) %s_prediction_%s' % (
-                        exp_name, name, args['snapshot']), img_name))
+                        exp_name, name, args['snapshot']), os.path.splitext(img_name)[0] + ".png"))
 
 
 if __name__ == '__main__':
