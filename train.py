@@ -21,7 +21,7 @@ torch.cuda.set_device(0)
 torch.autograd.set_detect_anomaly(True)
 
 ckpt_path = './ckpt'
-exp_name = 'BDRAR-xView2'
+exp_name = 'BDRAR-xView2-new'
 
 # batch size of 8 with resolution of 416*416 is exactly OK for the GTX 1080Ti GPU
 args = {
