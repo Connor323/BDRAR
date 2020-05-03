@@ -13,7 +13,7 @@ from model import BDRAR
 torch.cuda.set_device(0)
 
 ckpt_path = './ckpt'
-exp_name = 'BDRAR-xView2'
+exp_name = 'BDRAR-xView2-new'
 args = {
     'snapshot': '3001',
     'scale': 416
@@ -40,13 +40,13 @@ def main():
     net.eval()
     with torch.no_grad():
         for name, root in to_test.iteritems():
-            img_list = [img_name for img_name in os.listdir(os.path.join(root, 'ShadowImages')) if
+            img_list = [img_name for img_name in os.listdir(os.path.join(root, 'images')) if
                         img_name.endswith('.jpg')]
             for idx, img_name in enumerate(img_list):
                 print 'predicting for %s: %d / %d' % (name, idx + 1, len(img_list))
                 check_mkdir(
                     os.path.join(ckpt_path, exp_name, '(%s) %s_prediction_%s' % (exp_name, name, args['snapshot'])))
-                img = Image.open(os.path.join(root, 'ShadowImages', img_name))
+                img = Image.open(os.path.join(root, 'images', img_name))
                 w, h = img.size
                 img_var = Variable(img_transform(img).unsqueeze(0)).cuda()
                 res = net(img_var)
